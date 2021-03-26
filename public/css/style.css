@@ -1,0 +1,23 @@
+/*
+Pink: #f42069
+Green: #b4da55  
+*/
+
+nav {
+    background: #b4da55;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-right: 0.5em;
+}
+
+.btn {
+    background: #f42069;
+    color: white;
+}

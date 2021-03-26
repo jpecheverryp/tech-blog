@@ -6,22 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Techy!</title>
   <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
   <div>
     <header>
-      <nav style="background-color: brown;">
+      <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a class="btn" href="/">Home</a></li>
+          <li><a class="btn" href="/dashboard">Dashboard</a></li>
 
           <!-- Conditionally render login or logout links -->
           <li>
             {{#if logged_in}}
-            <button class="btn btn-primary" id="logout">logout</button>
+            <a class="btn" id="logout">logout</a>
             {{else}}
-            <a href="/login">login</a>
+            <a class="btn" href="/login">login</a>
             {{/if}}
           </li>
         </ul>
