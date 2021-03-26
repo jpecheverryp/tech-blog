@@ -9,28 +9,28 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <a href="/">Techy!</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="btn btn-primary" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
+  <div>
+    <header>
+      <nav style="background-color: brown;">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/dashboard">Dashboard</a></li>
+
+          <!-- Conditionally render login or logout links -->
+          <li>
+            {{#if logged_in}}
+            <button class="btn btn-primary" id="logout">logout</button>
+            {{else}}
+            <a href="/login">login</a>
+            {{/if}}
+          </li>
+        </ul>
       </nav>
+
     </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
+    <main>
       {{{ body }}}
     </main>
-    <footer>
-
-    </footer>
   </div>
 
   <!-- Render script for logged in users only -->
