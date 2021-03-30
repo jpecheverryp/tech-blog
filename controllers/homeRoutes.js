@@ -5,14 +5,20 @@ const withAuth = require("../utils/auth");
 router.get("/", async (req, res) => {
   try {
     const blogpostsData = await BlogPost.findAll({
-      include: [{model: User}]
+      include: [{ model: User }]
     });
-    blogposts = blogpostsData.map(r => r.dataValues)
-    blogposts.forEach(element => {
-      element.user = element.user.dataValues;
-      delete element.user.password;
-    });
-    console.log(blogposts);
+    if (blogpostsData) {
+      blogposts = blogpostsData.map(r => r.dataValues);
+      blogposts.forEach(element => {
+        element.user = element.user.dataValues;
+        // --------------------- Date time
+        const day = element.createdAt.getDate() + '';
+        const month = (element.createdAt.getMonth()) + '';
+        const year = element.createdAt.getFullYear() + '';
+        element.createdAt = `${month}/${day}/${year}`
+        delete element.user.password;
+      });
+    }
     res.render("homepage", {
       logged_in: req.session.logged_in,
       blogposts

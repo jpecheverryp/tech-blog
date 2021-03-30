@@ -22,9 +22,9 @@ BlogPost.init(
         user_id: {
             type: DataTypes.INTEGER
         },
-        dateCreated: {
+        createdAt: {
             type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW
+            defaultValue: DataTypes.NOW,
         },
     },
     {
