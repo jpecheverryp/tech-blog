@@ -19,5 +19,12 @@ nav li {
 
 .btn {
     background: #f42069;
-    color: white;
+    
+}
+
+.blogpost {
+    border: 1px #f42069 solid;
+    width: 75%;
+    margin: 1rem auto;
+    padding: 1rem;
 }

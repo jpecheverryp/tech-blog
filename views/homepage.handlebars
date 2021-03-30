@@ -1,4 +1,9 @@
 <div>
   <h1>Welcome to Techy!</h1>
-  <p>Here all the posts</p>
+  {{#each blogposts}}
+    <article class="blogpost">
+      <h2>{{this.title}}</h2>
+      <p>{{this.text}}</p>
+    </article>
+  {{/each}}
 </div>

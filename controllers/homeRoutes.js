@@ -1,11 +1,14 @@
 const router = require("express").Router();
-const { Project, User } = require("../models");
+const { User, BlogPost } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
+    const blogpostsData = await BlogPost.findAll();
+    blogposts = blogpostsData.map(r => r.dataValues)
     res.render("homepage", {
       logged_in: req.session.logged_in,
+      blogposts
     });
   } catch (err) {
     res.status(500).json(err);
@@ -21,7 +24,6 @@ router.get("/dashboard", withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-
     res.render("dashboard", {
       ...user,
       logged_in: true,
