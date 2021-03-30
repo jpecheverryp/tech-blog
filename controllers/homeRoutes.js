@@ -12,10 +12,10 @@ router.get("/", async (req, res) => {
       blogposts.forEach(element => {
         element.user = element.user.dataValues;
         // --------------------- Date time
-        const day = element.createdAt.getDate() + '';
-        const month = (element.createdAt.getMonth()) + '';
-        const year = element.createdAt.getFullYear() + '';
-        element.createdAt = `${month}/${day}/${year}`
+        const day = element.created_at.getDate() + '';
+        const month = (element.created_at.getMonth()) + '';
+        const year = element.created_at.getFullYear() + '';
+        element.created_at = `${month}/${day}/${year}`
         delete element.user.password;
       });
     }
