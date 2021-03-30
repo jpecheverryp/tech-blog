@@ -2,23 +2,23 @@ const { BlogPost } = require('../models');
 
 const postData = [
     {
-        title: 'postnumber1',
-        text: 'hello',
+        title: 'Javascript',
+        text: 'Javascript is an asynchronous language designed to run in browsers.',
         user_id: 4,
     },
     {
-        title: 'postnumber2',
-        text: 'hello',
+        title: 'CSS',
+        text: 'Cascading Style Sheets. It is used to style web pages.',
         user_id: 3,
     },
     {
-        title: 'postnumber3',
-        text: 'hello',
+        title: 'Jquery',
+        text: 'This is a library for javascript, it is used to manipulate the DOM easily.',
         user_id: 2,
     },
     {
-        title: 'postnumber4',
-        text: 'hello',
+        title: 'Sequelize',
+        text: 'This is an ORM it is a tool to use databases within webpages in a better way by using objects.',
         user_id: 1,
     },
 ];
