@@ -4,8 +4,15 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    const blogpostsData = await BlogPost.findAll();
+    const blogpostsData = await BlogPost.findAll({
+      include: [{model: User}]
+    });
     blogposts = blogpostsData.map(r => r.dataValues)
+    blogposts.forEach(element => {
+      element.user = element.user.dataValues;
+      delete element.user.password;
+    });
+    console.log(blogposts);
     res.render("homepage", {
       logged_in: req.session.logged_in,
       blogposts

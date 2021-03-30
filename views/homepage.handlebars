@@ -3,6 +3,7 @@
   {{#each blogposts}}
     <article class="blogpost">
       <h2>{{this.title}}</h2>
+      <i class="creator">Created by: <span>{{user.username}}</span> on date</i>
       <p>{{this.text}}</p>
     </article>
   {{/each}}
