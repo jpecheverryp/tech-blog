@@ -21,7 +21,11 @@ BlogPost.init(
         },
         user_id: {
             type: DataTypes.INTEGER
-        }
+        },
+        dateCreated: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW
+        },
     },
     {
         hooks: {
