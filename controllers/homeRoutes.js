@@ -1,28 +1,21 @@
 const router = require("express").Router();
 const { User, BlogPost } = require("../models");
 const withAuth = require("../utils/auth");
+const blogPostParser = require("../utils/blogPostParser")
 
 router.get("/", async (req, res) => {
   try {
     const blogpostsData = await BlogPost.findAll({
-      include: [{ model: User }]
+      include: [{ model: User }],
+      exclude: ['password']
     });
     if (blogpostsData) {
-      blogposts = blogpostsData.map(r => r.dataValues);
-      blogposts.forEach(element => {
-        element.user = element.user.dataValues;
-        // --------------------- Date time
-        const day = element.created_at.getDate() + '';
-        const month = (element.created_at.getMonth()) + '';
-        const year = element.created_at.getFullYear() + '';
-        element.created_at = `${month}/${day}/${year}`
-        delete element.user.password;
+      const blogposts = blogPostParser(blogpostsData);
+      res.render("homepage", {
+        logged_in: req.session.logged_in,
+        blogposts
       });
     }
-    res.render("homepage", {
-      logged_in: req.session.logged_in,
-      blogposts
-    });
   } catch (err) {
     res.status(500).json(err);
   }
