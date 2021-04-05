@@ -1,10 +1,6 @@
 <div>
   <h1>Welcome to Techy!</h1>
   {{#each blogposts}}
-    <article class="blogpost">
-      <h2>{{title}}</h2>
-      <i class="creator">Created by: <span>{{user.username}}</span> on {{created_at}}</i>
-      <p>{{text}}</p>
-    </article>
+    {{> blogpost}}
   {{/each}}
 </div>
