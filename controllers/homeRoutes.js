@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   try {
     const blogpostsData = await BlogPost.findAll({
       include: [{ model: User }],
-      exclude: ['password']
+      attributes: { exclude: ['password'] }
     });
     if (blogpostsData) {
       const blogposts = blogPostParser(blogpostsData);
@@ -24,15 +24,21 @@ router.get("/", async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ["password"] },
+    const blogPostData = await BlogPost.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
+      attributes: {exclude: ['password']}
     });
-
-    const user = userData.get({ plain: true });
+    const blogposts = [];
+    console.log(blogPostData);
+    if (blogPostData === []) {
+      blogposts = blogPostParser(blogPostData);
+      console.log(blogposts);
+    }
     res.render("dashboard", {
-      ...user,
-      logged_in: true,
+      logged_in: req.session.logged_in,
+      blogposts
     });
   } catch (err) {
     res.status(500).json(err);
