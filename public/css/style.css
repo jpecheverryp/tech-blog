@@ -19,6 +19,10 @@ nav li {
 
 .btn {
     background: #f42069;
+    color: white;
+    padding: 0.5rem;
+    display: block;
+    width: fit-content;
     
 }
 

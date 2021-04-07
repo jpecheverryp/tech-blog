@@ -34,11 +34,12 @@ router.get("/dashboard", withAuth, async (req, res) => {
     console.log(blogPostData);
     if (blogPostData === []) {
       blogposts = blogPostParser(blogPostData);
-      console.log(blogposts);
+      console.log(blogposts)
     }
     res.render("dashboard", {
       logged_in: req.session.logged_in,
-      blogposts
+      blogposts,
+      isDashboard: true
     });
   } catch (err) {
     res.status(500).json(err);
