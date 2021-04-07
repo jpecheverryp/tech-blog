@@ -7,7 +7,22 @@
     {{> blogpost}}
     {{/each}}
   </div>
+  <form id="create-form" style="display: none;">
+    <div>
+      <label for="title">Post Title
+        <input id="title" type="text">
+      </label>
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" name="description">
+        </textarea>
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
   <div>
-  <button class="btn" id="create-btn">NEW POST</button>
+    <button class="btn" id="create-btn">New Post</button>
   </div>
 </div>
