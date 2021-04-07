@@ -24,23 +24,24 @@ router.get("/", async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    const blogPostData = await BlogPost.findAll({
+    let username = await User.findByPk(req.session.user_id);
+    username = username.dataValues.username;
+    const blogpostsData = await BlogPost.findAll({
       where: {
         user_id: req.session.user_id
       },
-      attributes: {exclude: ['password']}
+      include: [{ model: User }],
+      attributes: {exclude: ['password']},
     });
-    const blogposts = [];
-    console.log(blogPostData);
-    if (blogPostData === []) {
-      blogposts = blogPostParser(blogPostData);
-      console.log(blogposts)
+    if(blogpostsData) {
+      const blogposts = blogPostParser(blogpostsData);
+      res.render("dashboard", {
+        logged_in: req.session.logged_in,
+        blogposts,
+        isDashboard: true,
+        username
+      });
     }
-    res.render("dashboard", {
-      logged_in: req.session.logged_in,
-      blogposts,
-      isDashboard: true
-    });
   } catch (err) {
     res.status(500).json(err);
   }
