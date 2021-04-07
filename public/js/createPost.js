@@ -1,8 +1,8 @@
+// DOM ELEMENTS
 const createBtn = document.getElementById('create-btn');
 const postForm = document.getElementById('create-form');
+// Global Variables
 let actualView = 'posts'
-
-createBtn.addEventListener('click', switchView)
 
 function switchView() {
     if (actualView === 'posts') {
@@ -18,3 +18,19 @@ function switchView() {
         return
     }
 }
+
+function newPostHandler(e) {
+    e.preventDefault();
+    
+    // Collect Values from form
+    const postTitle = document.getElementById('post-title').value.trim();
+    const postDescription = document.getElementById('post-description').value.trim();
+
+    if (postTitle && postDescription) {
+        console.log('I need a route first!');
+    }
+}
+
+createBtn.addEventListener('click', switchView)
+
+postForm.addEventListener('submit', newPostHandler)
