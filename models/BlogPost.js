@@ -20,7 +20,8 @@ BlogPost.init(
             allowNull: false,
         },
         user_id: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: false,
         },
         created_at: {
             type: DataTypes.DATE,
@@ -28,12 +29,6 @@ BlogPost.init(
         },
     },
     {
-        hooks: {
-            beforeCreate: async (newPost) => {
-                newPost.user_id = req.session.user_id;
-                return newPost
-            }
-        },
         sequelize,
         timestamps: false,
         freezeTableName: true,

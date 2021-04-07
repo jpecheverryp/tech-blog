@@ -19,7 +19,7 @@ function switchView() {
     }
 }
 
-function newPostHandler(e) {
+const newPostHandler = async (e) => {
     e.preventDefault();
     
     // Collect Values from form
@@ -27,7 +27,19 @@ function newPostHandler(e) {
     const postDescription = document.getElementById('post-description').value.trim();
 
     if (postTitle && postDescription) {
-        console.log('I need a route first!');
+        const response = await fetch('/api/posts', {
+            method: 'POST',
+            body: JSON.stringify({
+                title: postTitle,
+                text: postDescription
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+        if (response.ok) {
+            console.log(response);
+        } else {
+            alert(response.statusText);
+        }
     }
 }
 
