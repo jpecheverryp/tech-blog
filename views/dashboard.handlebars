@@ -2,11 +2,11 @@
   <div>
     <h2>Welcome {{username}}, here are your posts!</h2>
   </div>
-  <div>
+  <section id="blogpost-section">
     {{#each blogposts}}
     {{> blogpost}}
     {{/each}}
-  </div>
+  </section>
   <form id="create-form" style="display: none;">
     <div>
       <label for="post-title">Post Title

@@ -1,17 +1,20 @@
 // DOM ELEMENTS
 const createBtn = document.getElementById('create-btn');
 const postForm = document.getElementById('create-form');
+const postSection = document.getElementById('blogpost-section');
 // Global Variables
 let actualView = 'posts'
 
 function switchView() {
     if (actualView === 'posts') {
         postForm.style.display = 'block';
+        postSection.style.display = 'none';
         createBtn.textContent = 'View Posts'
         actualView = 'createNew';
         return
     }
     if (actualView === 'createNew') {
+        postSection.style.display = 'block';
         postForm.style.display = 'none';
         createBtn.textContent = 'New Post'
         actualView = 'posts';
