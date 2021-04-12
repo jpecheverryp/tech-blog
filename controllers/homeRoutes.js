@@ -13,7 +13,8 @@ router.get("/", async (req, res) => {
       const blogposts = blogPostParser(blogpostsData);
       res.render("homepage", {
         logged_in: req.session.logged_in,
-        blogposts
+        blogposts,
+        allowSelectPosts: true
       });
     }
   } catch (err) {
@@ -39,7 +40,8 @@ router.get("/dashboard", withAuth, async (req, res) => {
         logged_in: req.session.logged_in,
         blogposts,
         isDashboard: true,
-        username
+        username,
+        allowSelectPosts: true
       });
     }
   } catch (err) {
