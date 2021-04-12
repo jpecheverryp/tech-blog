@@ -1,27 +1,25 @@
 <div>
+  <h2>Welcome {{username}}, here are your posts!</h2>
+</div>
+<section id="blogpost-section">
+  {{#each blogposts}}
+  {{> blogpost}}
+  {{/each}}
+</section>
+<form id="create-form" style="display: none;">
   <div>
-    <h2>Welcome {{username}}, here are your posts!</h2>
+    <label for="post-title">Post Title
+      <input id="post-title" type="text">
+    </label>
   </div>
-  <section id="blogpost-section">
-    {{#each blogposts}}
-    {{> blogpost}}
-    {{/each}}
-  </section>
-  <form id="create-form" style="display: none;">
-    <div>
-      <label for="post-title">Post Title
-        <input id="post-title" type="text">
-      </label>
-    </div>
-    <div>
-      <label for="post-description">Description</label>
-      <textarea id="post-description" name="description"></textarea>
-    </div>
-    <div>
-      <button type="submit">Submit</button>
-    </div>
-  </form>
   <div>
-    <button class="btn" id="create-btn">New Post</button>
+    <label for="post-description">Description</label>
+    <textarea id="post-description" name="description"></textarea>
   </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+<div>
+  <button class="btn" id="create-btn">New Post</button>
 </div>
