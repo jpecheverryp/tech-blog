@@ -32,3 +32,6 @@ nav li {
     margin: 1rem auto;
     padding: 1rem;
 }
+.blogpost:hover {
+    background-color: thistle;
+}
